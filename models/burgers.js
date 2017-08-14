@@ -18,11 +18,6 @@ var burger = {
     orm.update("burgers", objColVals, condition, function (res) {
       bb(res);
     });
-  },
-  delete: function(condition, bb) {
-    orm.delete("burgers", condition, function(res) {
-      bb(res);
-    });
   }
 };
 

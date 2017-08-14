@@ -40,7 +40,6 @@
 
           {{#each burgers}}
             {{#unless this.devoured}}
-
               <!-- <ul class="list-group"> -->
                 <br>
                 <li class="list-group-item">
@@ -49,13 +48,11 @@
                     {{this.burger_name}}
 
                   </h4>
-                <form action="burgers/{{this.id}}?_method=PUT" method="POST">
+                <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                     <input type="hidden" name="devoured" value="true"><br>
                     <!-- <button type=" submit">EAT IT!</button> -->
                     <button type="submit" class="btn btn-danger">Eat it!</button>
-
                 </form>
-                <!-- {{> burgers/delete-burger}} -->
               </li>
 
             </ul>
@@ -65,26 +62,32 @@
 
         </ul>
 
+        <div class="container">
+          <h2>Eaten Burgers!</h2><hr>
+
+            <ul class="list-group">
+
+              {{#each burgers}}
+                {{#if this.devoured}}
+
+                  <!-- <ul class="list-group"> -->
+                    <br>
+                    <li class="list-group-item">
+                      <h4>
+
+                        {{this.id}}.{{this.burger_name}}
+
+                      </h4>
+                  </li>
+
+                </ul>
+
+                {{/if}}
+              {{/each}}
+
+            </ul>
         <!-- <h2>Burgers you ate!</h2> -->
-
-        <ul>
-          {{#each burgers}}
-            {{#if this.devoured}}
-              <li>
-                {{this.burger_name}}
-
-                <form action="/{{this.id}}?_method=PUT" method="POST">
-                  <input type="hidden" name="devoured" value="true">
-                  <button type="submit">DEVOUR IT!</button>
-                </form>
-
-                {{burgers/delete-burger}}
-              </li>
-            {{/if}}
-          {{/each}}
-        </ul>
-
-    </div>
+      </div>
 
 
 </div>
