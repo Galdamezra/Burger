@@ -53,25 +53,14 @@ var orm = {
   //objColVals would be the colunns and values that you want to update
   //an example of objColVals would be {burger_name: Lettuce lettuce, devoured: true}
   update: function (table, objColVals, condition, bb) {
-    var queryString = "UPDATE" + table;
+    var queryString = "UPDATE " + table;
 
     queryString = queryString + " SET ";
-    queryString = queryString + objColVals(objColVals);
+    queryString = queryString + objToSql(objColVals);
     queryString = queryString + " WHERE ";
     queryString = queryString + condition;
 
     console.log(queryString);
-    connection.query(queryString, function (err, result) {
-      if (err) throw err;
-      bb(result)
-    });
-  },
-  delete: function(table, condition, bb) {
-    var queryString = "DELETE FROM " + table;
-
-    queryString = queryString + " WHERE ";
-    queryString = queryString + condition;
-
     connection.query(queryString, function (err, result) {
       if (err) throw err;
       bb(result)
